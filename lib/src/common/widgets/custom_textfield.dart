@@ -1,0 +1,41 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import '../constant/colors_constant.dart';
+import '../constant/padding_constants.dart';
+
+class CustomTextField extends StatelessWidget {
+  const CustomTextField({
+    Key? key,
+    required this.placeholder,
+  }) : super(key: key);
+
+  final String placeholder;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: CupertinoTextField(
+        placeholder: placeholder,
+        placeholderStyle:const  TextStyle(
+          color: Colors.white,
+          fontSize: 16,
+        ),
+        style: const  TextStyle(
+          color: Colors.black,
+          fontSize: 16,
+        ),
+        padding: AppPaddings.primary,
+        decoration: BoxDecoration(
+          color: AppColors.inActive,
+          border: Border.all(
+            color: Colors.white,
+            width: 2,
+          ),
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+    );
+  }
+}
