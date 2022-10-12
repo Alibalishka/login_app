@@ -44,7 +44,7 @@ class RegisterScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children:[
-                    Image.asset('asset/image/animeMask.png'),
+                    Image.asset('asset/image/mask.png', height: 100,),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [

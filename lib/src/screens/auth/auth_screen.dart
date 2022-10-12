@@ -42,7 +42,7 @@ class AuthScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Image.asset('asset/image/anime2.png'),
+                Image.asset('asset/image/udzeroMask.png', height: 155,),
                 const CustomKoreaText(text: 'ひさしぶり!'),
                 const CustomTextWidget(color: Colors.white, text: 'Hello, we miss you!', fontWeight: FontWeight.w200, size: 16, letterSpace: 0, textAlign: TextAlign.center,), 
                 const SizedBox(height: 20),
@@ -72,7 +72,7 @@ class AuthScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: const [
-                      CustomSocialWidget(link: 'asset/image/InstagramLogo.png'),
+                      CustomSocialWidget(link: 'asset/image/InstagramLogo4x.png'),
                       CustomSocialWidget(link: 'asset/image/TwitterLogo.png'),
                       CustomSocialWidget(link: 'asset/image/FacebookLogo.png'),
                     ],

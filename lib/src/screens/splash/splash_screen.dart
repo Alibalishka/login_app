@@ -40,10 +40,9 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Column(
             children: [              
               Stack(
+                alignment: Alignment.topCenter,
                 children: [
-                  const SizedBox(
-                    height: 405,
-                  ),
+                  const Spacer(),
                   Align(
                     alignment: Alignment.center,
                     child: Container(
@@ -55,10 +54,9 @@ class _SplashScreenState extends State<SplashScreen> {
                       ),
                     ),
                   ),
-                  Positioned(
-                    top: 5,
-                    child: Image.asset('asset/image/anime.png'),
-                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Image.asset('asset/image/udzero.png', height: 400, fit: BoxFit.fitHeight, width: double.infinity,)),
                 ],
               ),  
               Row(
