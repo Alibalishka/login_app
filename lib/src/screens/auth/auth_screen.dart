@@ -1,3 +1,7 @@
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:login_application/src/common/constant/colors_constant.dart';
@@ -9,13 +13,20 @@ import '../../common/widgets/custom_button.dart';
 import '../../common/widgets/custom_korea_text.dart';
 import '../../common/widgets/custom_line.dart';
 import '../../common/widgets/custom_social_icon.dart';
-import '../../common/widgets/custom_text.dart';
+import '../../common/widgets/custom_text_16.dart';
 import '../../common/widgets/custom_textfield.dart';
 import '../../common/widgets/custom_top_text_textfield.dart';
 
-class AuthScreen extends StatelessWidget {
+class AuthScreen extends StatefulWidget {
   const AuthScreen({Key? key}) : super(key: key);
 
+  @override
+  State<AuthScreen> createState() => _AuthScreenState();
+}
+
+class _AuthScreenState extends State<AuthScreen> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -44,24 +55,33 @@ class AuthScreen extends StatelessWidget {
               children: [
                 Image.asset('asset/image/udzeroMask.png', height: 155,),
                 const CustomKoreaText(text: 'ひさしぶり!'),
-                const CustomTextWidget(color: Colors.white, text: 'Hello, we miss you!', fontWeight: FontWeight.w200, size: 16, letterSpace: 0, textAlign: TextAlign.center,), 
+                const CustomTextWidget16(color: Colors.white, text: 'Hello, we miss you!'), 
                 const SizedBox(height: 20),
                 const CustomTopTextTextField(text: 'Login'),
                 const SizedBox(height: 5),
-                const CustomTextField(placeholder: 'Email'),
+                CustomTextField(placeholder: 'Email', controller: emailController, isInable: false,),
                 const SizedBox(height: 20),
                 const CustomTopTextTextField(text: 'Password'),
                 const SizedBox(height: 5),
-                const CustomTextField(placeholder: 'Password'),
+                CustomTextField(placeholder: 'Password', controller: passwordController, isInable: true,),
                 const SizedBox(height: 25),
-                const CustomButton(text: 'Login'),
+                CustomButton(
+                  text: 'Login',
+                  onPressed: () {
+                    FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text, password: passwordController.text).then((value) {
+                      Navigator.pushNamed(context, MainRoute);
+                    }).onError((error, stackTrace) {
+                      log("Error ${error.toString()}");
+                    });
+                  },
+                ),
                 const SizedBox(height: 25),
                 // Decorative lines
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
                     CustomLine(),
-                    CustomTextWidget(color: AppColors.white, text: 'User Login Social', fontWeight: FontWeight.normal, size: 16, letterSpace: 1, textAlign: TextAlign.center),
+                    CustomTextWidget16(color: AppColors.white, text: 'User Login Social'),
                     CustomLine(),
                   ],
                 ),
@@ -83,9 +103,9 @@ class AuthScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const CustomTextWidget(color: AppColors.white, text: "Don't have an account?", fontWeight: FontWeight.normal, size: 16, letterSpace: 0, textAlign: TextAlign.center),
+                    const CustomTextWidget16(color: AppColors.white, text: "Don't have an account?"),
                     GestureDetector(
-                      child: const CustomTextWidget(color: AppColors.purple, text: " Register", fontWeight: FontWeight.normal, size: 16, letterSpace: 0, textAlign: TextAlign.center),
+                      child: const CustomTextWidget16(color: AppColors.purple, text: " Register"),
                       onTap: () => Navigator.pushNamed(context, RegisterRoute),
                     ),
                   ],

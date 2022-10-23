@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "406160152322",
+    "project_id": "sigin-project-38b43",
+    "storage_bucket": "sigin-project-38b43.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406160152322:android:cd25aeebc7ac6fa538141b",
+        "android_client_info": {
+          "package_name": "com.example.login_application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "406160152322-7s348q2ihp59u6l1a1174iga9d29li23.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgEGyScZH-LKH2DgL3TYUL92Gn30f_WDk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "406160152322-7s348q2ihp59u6l1a1174iga9d29li23.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

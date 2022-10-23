@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:login_application/src/common/constant/colors_constant.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:login_application/src/common/constant/padding_constants.dart';
 import 'package:login_application/src/router/routing_constant.dart';
+import 'package:login_application/src/screens/splash/widgets/custom_circle.dart';
+import 'package:login_application/src/screens/splash/widgets/custom_image.dart';
 
-import '../../common/widgets/custom_text.dart';
+import '../../common/widgets/custom_text_16.dart';
+import '../../common/widgets/custom_text_35.dart';
+import 'widgets/custom_text_button.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -18,11 +21,6 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: const CupertinoNavigationBar(
-        backgroundColor: AppColors.primary,
-        
-        border: Border(),
-      ),
       child: SafeArea(
         child: Container(
           width: double.infinity,
@@ -38,36 +36,26 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
           ),
           child: Column(
-            children: [              
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [   
+              const Spacer(),           
               Stack(
-                alignment: Alignment.topCenter,
-                children: [
-                  const Spacer(),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      width: 315,
-                      height: 315,
-                      decoration: const BoxDecoration(
-                        color: AppColors.pink,
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Image.asset('asset/image/udzero.png', height: 400, fit: BoxFit.fitHeight, width: double.infinity,)),
+                alignment: AlignmentDirectional.topCenter,
+                children: const [
+                  CustomCircle(),
+                  CustomImage(url: 'asset/image/udzero.png'),
                 ],
               ),  
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
-                  CustomTextWidget(text: 'anime', color: Colors.white, fontWeight: FontWeight.bold, size: 35, letterSpace: 2, textAlign: TextAlign.center),
-                  CustomTextWidget(text: 'yabu.', color: AppColors.primary, fontWeight: FontWeight.bold, size: 35, letterSpace: 2, textAlign: TextAlign.center),
+                  CustomTextWidget35(text: 'anime', color: Colors.white),
+                  CustomTextWidget35(text: 'yabu.', color: AppColors.primary),
                 ],
               ),
               const SizedBox(height: 10),
-              const CustomTextWidget(color: Colors.white, text: 'Watch anime online in HD, subtitled or  dubbed, \n on your  cell phone or computer. Animeyabu, \n your online anime portal!', fontWeight: FontWeight.normal, size: 16, letterSpace: 0, textAlign: TextAlign.center ),
+              const CustomTextWidget16(color: Colors.white, text: 'Watch anime online in HD, subtitled or  dubbed, \n on your  cell phone or computer. Animeyabu, \n your online anime portal!' ),
               const SizedBox(height: 40),
               Padding(
                 padding: AppPaddings.horizontal,
@@ -101,68 +89,11 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
               ),
               const Spacer(),
-              const CustomTextWidget(color: AppColors.pink, text: 'Developed by TA', fontWeight: FontWeight.normal, size: 16, letterSpace: 0, textAlign: TextAlign.center,),
+              const CustomTextWidget16(color: AppColors.pink, text: 'Developed by TA'),
               const Spacer(),
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class CustomTextButton extends StatelessWidget {
-  const CustomTextButton({
-    Key? key,
-    required this.buttonName,
-    required this.onPressed,
-    required this.bgColor,
-    required this.textColor,
-  }) : super(key: key);
-
-  final String buttonName;
-  final VoidCallback onPressed;
-  final Color bgColor;
-  final Color textColor;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 60,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: bgColor,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: TextButton(
-        style: ButtonStyle(
-          overlayColor: MaterialStateProperty.resolveWith((states) => Colors.black12),
-        ),
-        child: ButtonTextStyle(text: buttonName, color: textColor,), 
-        onPressed: onPressed,
-      ),
-    );
-  }
-}
-
-class ButtonTextStyle extends StatelessWidget {
-  const ButtonTextStyle({
-    Key? key,
-    required this.text,
-    required this.color,
-  }) : super(key: key);
-  
-  final String text;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: GoogleFonts.archivo(
-        fontWeight: FontWeight.bold,
-        fontSize: 16,
-        color: color,
       ),
     );
   }

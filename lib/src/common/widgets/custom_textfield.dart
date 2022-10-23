@@ -8,16 +8,22 @@ class CustomTextField extends StatelessWidget {
   const CustomTextField({
     Key? key,
     required this.placeholder,
+    required this.controller,
+    required this.isInable,
   }) : super(key: key);
 
   final String placeholder;
+  final TextEditingController controller;
+  final bool isInable;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: CupertinoTextField(
+        controller: controller,
         placeholder: placeholder,
+        keyboardType: isInable == true ? TextInputType.visiblePassword : TextInputType.emailAddress,
         placeholderStyle:const  TextStyle(
           color: Colors.white,
           fontSize: 16,
